@@ -1,24 +1,15 @@
 from fastapi import FastAPI, status
 from fastapi.responses import JSONResponse
-from fastapi.encoders import jsonable_encoder
 
-from pydantic import BaseModel
-from typing import List, Union, Optional, Dict
 
-from db import insert_data
+from models.models import *
+
+from db import insert_data, update_data
 
 app = FastAPI()
 
+
 # couriers
-
-
-class Сouriers_post(BaseModel):
-    data: List = None
-
-
-class Сouriers_patch(BaseModel):
-    Dict
-
 
 @app.post('/couriers')
 async def post_query(data: Сouriers_post):
@@ -42,7 +33,7 @@ async def post_query(data: Сouriers_post):
 # TODO: не работает, нужно починить
 @app.patch('/couriers/{courier_id}')
 async def patch_query(courier_id: int, data: Сouriers_patch):
-    return data
+    print(data.data['regions'])
 
 ###############################################################################
 
