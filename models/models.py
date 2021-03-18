@@ -1,10 +1,14 @@
 from pydantic import BaseModel
-from typing import List, Optional, Dict
+from typing import List, Dict
 
 
-class Сouriers_post(BaseModel):
+class СouriersPost(BaseModel):
     data: List = None
 
 
-class Сouriers_patch(BaseModel):
+class СouriersPatch(BaseModel):
     data: Dict = None
+
+
+class OrdersPost(BaseModel):
+    data: List = None
