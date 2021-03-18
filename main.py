@@ -30,7 +30,6 @@ async def post_query(data: Сouriers_post):
         return JSONResponse(status_code=status.HTTP_201_CREATED, content={"couriers": created_couriers})
 
 
-# TODO: не работает, нужно починить
 @app.patch('/couriers/{courier_id}')
 async def patch_query(courier_id: int, data: Сouriers_patch):
     update_data(courier_id, data.data)
