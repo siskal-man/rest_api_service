@@ -32,104 +32,120 @@ def update_data(courier_id, data: dict):
     mycursor = mydb.cursor()
 
     if len(data) == 1:
-        if data[0] == 'courier_type':
+        if 'courier_type' in data.keys():
             sql = "UPDATE couriers SET courier_type = %s WHERE courier_id = %s"
-            val = (data[0], courier_id)
+            val = (str(data['courier_type']), courier_id)
 
             mycursor.execute(sql, val)
 
             mydb.commit()
-        elif data[0] == 'regions':
+        elif 'regions' in data.keys():
             sql = "UPDATE couriers SET regions = %s WHERE courier_id = %s"
-            val = (str(data[0]), courier_id)
+            val = (str(data['regions']), courier_id)
 
             mycursor.execute(sql, val)
 
             mydb.commit()
-        elif data[0] == 'working_hours':
+        elif 'working_hours' in data.keys():
             sql = "UPDATE couriers SET working_hours = %s WHERE courier_id = %s"
-            val = (str(data[0]), courier_id)
+            val = (str(data['working_hours']), courier_id)
 
             mycursor.execute(sql, val)
 
             mydb.commit()
 
     elif len(data) == 2:
-        if data[0] == 'courier_type':
-            if data[1] == 'regions':
+        if 'courier_type' in data.keys():
+            if 'regions' in data.keys():
                 sql = "UPDATE couriers SET courier_type = %s WHERE courier_id = %s"
-                val = (data[0], courier_id)
+                val = (str(data['courier_type']), courier_id)
 
                 mycursor.execute(sql, val)
                 mydb.commit()
 
                 sql = "UPDATE couriers SET regions = %s WHERE courier_id = %s"
-                val = (str(data[1]), courier_id)
+                val = (str(data['regions']), courier_id)
 
                 mycursor.execute(sql, val)
                 mydb.commit()
-            elif data[1] == 'working_hours':
+            elif 'working_hours' in data.keys():
                 sql = "UPDATE couriers SET courier_type = %s WHERE courier_id = %s"
-                val = (data[0], courier_id)
+                val = (str(data['courier_type']), courier_id)
 
                 mycursor.execute(sql, val)
                 mydb.commit()
 
                 sql = "UPDATE couriers SET working_hours = %s WHERE courier_id = %s"
-                val = (str(data[1]), courier_id)
+                val = (str(data['working_hours']), courier_id)
 
                 mycursor.execute(sql, val)
                 mydb.commit()
-        elif data[0] == 'working_hours':
-            if data[1] == 'regions':
+        elif 'working_hours' in data.keys():
+            if 'regions' in data.keys():
                 sql = "UPDATE couriers SET working_hours = %s WHERE courier_id = %s"
-                val = (str(data[0]), courier_id)
+                val = (str(data['working_hours']), courier_id)
 
                 mycursor.execute(sql, val)
                 mydb.commit()
 
                 sql = "UPDATE couriers SET regions = %s WHERE courier_id = %s"
-                val = (str(data[1]), courier_id)
+                val = (str(data['regions']), courier_id)
 
                 mycursor.execute(sql, val)
                 mydb.commit()
-            elif data[1] == 'courier_type':
+            elif 'courier_type' in data.keys():
                 sql = "UPDATE couriers SET working_hours = %s WHERE courier_id = %s"
-                val = (str(data[0]), courier_id)
+                val = (str(data['working_hours']), courier_id)
 
                 mycursor.execute(sql, val)
                 mydb.commit()
 
                 sql = "UPDATE couriers SET courier_type = %s WHERE courier_id = %s"
-                val = (data[1], courier_id)
+                val = (str(data['courier_type']), courier_id)
 
                 mycursor.execute(sql, val)
                 mydb.commit()
-        elif data[0] == 'regions':
-            if data[1] == 'courier_type':
+        elif 'regions' in data.keys():
+            if 'courier_type' in data.keys():
                 sql = "UPDATE couriers SET regions = %s WHERE courier_id = %s"
-                val = (data[0], courier_id)
+                val = (str(data['regions']), courier_id)
 
                 mycursor.execute(sql, val)
                 mydb.commit()
 
                 sql = "UPDATE couriers SET courier_type = %s WHERE courier_id = %s"
-                val = (str(data[1]), courier_id)
+                val = (str(data['courier_type']), courier_id)
 
                 mycursor.execute(sql, val)
                 mydb.commit()
-            elif data[1] == 'working_hours':
+            elif 'working_hours' in data.keys():
                 sql = "UPDATE couriers SET regions = %s WHERE courier_id = %s"
-                val = (data[0], courier_id)
+                val = (str(data['regions']), courier_id)
 
                 mycursor.execute(sql, val)
                 mydb.commit()
 
                 sql = "UPDATE couriers SET working_hours = %s WHERE courier_id = %s"
-                val = (str(data[1]), courier_id)
+                val = (str(data['working_hours']), courier_id)
 
                 mycursor.execute(sql, val)
                 mydb.commit()
 
     elif len(data) == 3:
-        pass
+        sql = "UPDATE couriers SET regions = %s WHERE courier_id = %s"
+        val = (str(data['regions']), courier_id)
+
+        mycursor.execute(sql, val)
+        mydb.commit()
+
+        sql = "UPDATE couriers SET working_hours = %s WHERE courier_id = %s"
+        val = (str(data['working_hours']), courier_id)
+
+        mycursor.execute(sql, val)
+        mydb.commit()
+
+        sql = "UPDATE couriers SET courier_type = %s WHERE courier_id = %s"
+        val = (str(data['courier_type']), courier_id)
+
+        mycursor.execute(sql, val)
+        mydb.commit()

@@ -33,7 +33,8 @@ async def post_query(data: Сouriers_post):
 # TODO: не работает, нужно починить
 @app.patch('/couriers/{courier_id}')
 async def patch_query(courier_id: int, data: Сouriers_patch):
-    print(data.data['regions'])
+    update_data(courier_id, data.data)
+    return data.data
 
 ###############################################################################
 
