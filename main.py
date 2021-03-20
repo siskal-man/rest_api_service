@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 
 from models.models import *
 
-from db import insert_data_courier, update_data_courier, insert_data_order, update_data_order
+from db import insert_data_courier, update_data_courier, insert_data_order
 
 app = FastAPI()
 
