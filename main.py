@@ -1,4 +1,4 @@
-from fastapi import FastAPI, status, HTTPException
+from fastapi import FastAPI, status, exceptions
 from fastapi.responses import JSONResponse
 
 from models.models import *
@@ -17,16 +17,23 @@ async def post_query_courier(data: СouriersPost):
     # сохранение курьера в системе
     for item in data.data:
         try:
-            insert_data_courier(
-                [item['courier_id'], item['courier_type'], str(item['regions']), str(item['working_hours'])])
+            courier = {}
+            courier[item['courier_id']] = {
+                'courier_type': item['courier_type'],
+                'regions': item['regions'],
+                'working_hours': item['working_hours']
+            }
             created_couriers.append({'id': item['courier_id']})
-        except Exception:
+        except KeyError:
             error_id.append({'id': item['courier_id']})
 
     if error_id:
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST,
                             content={"validation_error": {"couriers": error_id}})
     else:
+        for item in data.data:
+            insert_data_courier(
+                [item['courier_id'], item['courier_type'], str(item['regions']), str(item['working_hours'])])
         return JSONResponse(status_code=status.HTTP_201_CREATED, content={"couriers": created_couriers})
 
 
@@ -48,15 +55,21 @@ async def post_query_order(data: OrdersPost):
     # сохранение курьера в системе
     for item in data.data:
         try:
-            insert_data_order([item['order_id'], item['weight'], str(item['region']), str(item['delivery_hours'])])
+            order = {}
+            order[item['order_id']] = {
+                'weight': item['weight'],
+                'region': item['region'],
+                'delivery_hours': item['delivery_hours']
+            }
             created_orders.append({'id': item['order_id']})
-        except Exception:
+        except KeyError:
             error_id.append({'id': item['order_id']})
 
     if error_id:
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST,
                             content={"validation_error": {"orders": error_id}})
     else:
+        insert_data_order([item['order_id'], item['weight'], str(item['region']), str(item['delivery_hours'])])
         return JSONResponse(status_code=status.HTTP_201_CREATED, content={"orders": created_orders})
 
 #

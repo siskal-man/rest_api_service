@@ -1,8 +1,8 @@
-from mysql import connector
+import mysql.connector
 
 
 def insert_data_courier(data: list):
-    mydb = connector.connect(
+    mydb = mysql.connector.connect(
         host="localhost",
         user="root",
         password="root",
@@ -20,7 +20,7 @@ def insert_data_courier(data: list):
 
 
 def update_data_courier(courier_id, data: dict):
-    mydb = connector.connect(
+    mydb = mysql.connector.connect(
         host="localhost",
         user="root",
         password="root",
@@ -151,7 +151,7 @@ def update_data_courier(courier_id, data: dict):
 
 
 def insert_data_order(data: list):
-    mydb = connector.connect(
+    mydb = mysql.connector.connect(
         host="localhost",
         user="root",
         password="root",
