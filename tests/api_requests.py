@@ -12,10 +12,10 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-sql = "SELECT * FROM couriers"
+sql = 'SELECT * FROM couriers WHERE regions = "[1, 12, 22]"'
 
 mycursor.execute(sql)
 
-print(f'courier_id :: courier_type :: regions :: working_hours')
+print('courier_id :: courier_type :: regions :: working_hours')
 for item in mycursor:
     print(item)

@@ -72,6 +72,10 @@ async def post_query_order(data: OrdersPost):
         insert_data_order([item['order_id'], item['weight'], str(item['region']), str(item['delivery_hours'])])
         return JSONResponse(status_code=status.HTTP_201_CREATED, content={"orders": created_orders})
 
+@app.post('/orders/assign', response_model=OrdersAssignPost)
+async def post_query_order_assign(data: OrdersAssignPost):
+    pass
+
 #
 #
 # @app.get('/couriers/get')
