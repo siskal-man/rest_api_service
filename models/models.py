@@ -12,3 +12,7 @@ class СouriersPatch(BaseModel):
 
 class OrdersPost(BaseModel):
     data: List = None
+
+
+class OrdersAssignPost(BaseModel):
+    courier_id: int
